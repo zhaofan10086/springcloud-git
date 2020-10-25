@@ -12,6 +12,7 @@
 
     <modules>
         <module>eureka</module>
+        <module>provider</module>
     </modules>
 
 </project>
