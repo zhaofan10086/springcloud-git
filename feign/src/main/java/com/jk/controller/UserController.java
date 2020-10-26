@@ -2,11 +2,9 @@ package com.jk.controller;
 
 import com.jk.entity.User;
 import com.jk.service.UserService;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -16,13 +14,17 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @RequestMapping("/hello")
+    public String hello(){
+        return userService.hello();
+    }
     /**
      * 列表
      * @param user
      * @return
      */
     @RequestMapping("/findAll")
-    public List<User> findAll(@RequestBody User user){
+    public List<User> findAll(User user){
         return userService.findAll(user);
     }
 
@@ -31,7 +33,7 @@ public class UserController {
      * @param user
      */
     @RequestMapping("/addUser")
-    public void addUser(@RequestBody User user){
+    public void addUser(User user){
         userService.addUser(user);
     }
 
@@ -42,7 +44,7 @@ public class UserController {
      */
     @RequestMapping("/findUserById")
     public User findUserById(@RequestParam(value="id") Integer id){
-       return  userService.findUserById(id);
+        return  userService.findUserById(id);
     }
 
     /**
@@ -50,7 +52,7 @@ public class UserController {
      * @param user
      */
     @RequestMapping("/updateUser")
-    public void updateUser(@RequestBody User user){
+    public void updateUser(User user){
         userService.updateUser(user);
     }
 
